@@ -1,38 +1,161 @@
+*{
+  padding: 0;
+  font-size: 2vh;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: 200;
+  margin-right: 2vw;
+}
+
+.header {
+  font-size: 4vh;
+}
+
+div {
+  margin: 20px 0;
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.number {
+  margin: 1px 1px 1px 1px;
+}
+
+div {
+  margin: 5px;
+}
+.text-out {
+  background-color: black;
+  color: white;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 25vw;
+  height: 10vh;
+}
+
+.logocont {
+  width: 25vw;
+  height: 10vh;
+}
+
 .App {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 102vh;
+  width: 102vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: fixed; 
+  color: rgb(255, 255, 255);
+  }
+
+.Container {
+  margin-right: 2vw;
+  border: 2px solid rgb(245, 238, 238);
+  height: auto;
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.title{
+  width: 80vw;
+  margin: 10px 2vw 0 0;
+  background: linear-gradient(#000000 0%, #000000 30%, black 45%, rgb(34, 34, 34) 80%,
+   #414141 100%);
+  border-radius: 80%;
+  text-align: center;
+  position: relative;
   }
+
+.sell {
+  color: red;
+  margin: 0 .25vw;
+ 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.buy {
+  color: green;
+  margin: 0 .25vw;
+}
+
+h3 {
+
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: baseline;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  margin: 10px 2vw 0 0;
+}
+
+h4 {
+  margin: 0;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header {
+  font-size: 50px;
 }
+
+.form {
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 2vw;
+}
+
+.summary {
+  text-align: center;
+  align-items: center;
+}
+
+a {
+  
+}
+
+.buttons {
+  justify-content: center;
+}
+
+.sell-button {
+  background-color: red;
+}
+
+.buy-button {
+  background-color: green;
+}
+
+@media screen and (max-width: 750px){
+  *{
+    padding: 0;
+    font-size: 1.8vh;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 300;
+    margin-right: 2vw;
+  }
+  
+}
+
+
+
