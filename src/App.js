@@ -168,7 +168,7 @@ function App() {
       <label for="start-balance">Current # Coins</label><br></br>
       <input placeholder='Number of Coins' size='10' onChange={changeBalance} type="number" min='0' id="start-balance" name='inputcrrnt' /><br></br>
       <label for="coin price">Target Price</label><br></br>
-      <input placeholder='$' size='10' onChange={changePrice} type="number" id="coin price" name='inputprice' /><br>
+      <input placeholder='$' size='10' onChange={changePrice} type="number" min = {worth} id="coin price" name='inputprice' /><br>
       </br>
       <label for="txamount">Buy/Sell Amount</label><br></br>
       <input placeholder={coin} size='10'onChange={changeAmount} type="number" id="txamount" name='inputamnt'/><br>
