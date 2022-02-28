@@ -17,6 +17,7 @@ function App() {
   let futureCoins = 0;
   let txOption = '___';
   let outcome = '';
+  let worth = 0;
    
   useEffect(() => {
     fetch('https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd')
@@ -98,21 +99,24 @@ function App() {
 
   switch(coin) {
     case 'XRP':
-      usdBalance = (XRP * balance)
+      worth = XRP
+      usdBalance = (XRP * balance).toFixed(2)
       coinPrice = 
       <div>
         <h3>The price of XRP is ${XRP}</h3>
       </div>
       break;
     case 'BTC':
-      usdBalance = (BTC * balance)
+      worth = BTC
+      usdBalance = (BTC * balance).toFixed(2)
       coinPrice = 
       <div>
         <h3>The price of BTC is ${BTC}</h3>
       </div>
       break;
     case 'ETH':
-      usdBalance = (ETH * balance)
+      worth = ETH
+      usdBalance = (ETH * balance).toFixed(2)
       coinPrice =
       <div>
         <h3>The price of ETH is ${ETH}</h3>
@@ -133,7 +137,7 @@ function App() {
     </div>
 
 
-  let change = (Math.abs(potentialBal - futureMoney)).toFixed(2);
+  let change = (Math.abs(futureMoney - potentialBal-(txamount*worth))).toFixed(2);
   let difference = 
   <div>
     <h3 className ='flex'>You would<a className='number'>{outcome}</a> ${change} </h3>
@@ -162,9 +166,9 @@ function App() {
       <br></br>
       {coinPrice}
       <label for="start-balance">Current # Coins</label><br></br>
-      <input placeholder='$' size='10' onChange={changeBalance} type="number" id="start-balance" name='inputcrrnt' /><br></br>
+      <input placeholder='Number of Coins' size='10' onChange={changeBalance} type="number" min='0' id="start-balance" name='inputcrrnt' /><br></br>
       <label for="coin price">Target Price</label><br></br>
-      <input placeholder='$' size='10' onChange={changePrice} min ={XRP} type="number" id="coin price" name='inputprice' /><br>
+      <input placeholder='$' size='10' onChange={changePrice} type="number" id="coin price" name='inputprice' /><br>
       </br>
       <label for="txamount">Buy/Sell Amount</label><br></br>
       <input placeholder={coin} size='10'onChange={changeAmount} type="number" id="txamount" name='inputamnt'/><br>

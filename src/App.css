@@ -1,19 +1,15 @@
 *{
+  margin: 0;
   padding: 0;
   font-size: 2vh;
   font-family:'Courier New', Courier, monospace;
   font-weight: 200;
-  margin-right: 2vw;
 }
 
 .header {
   font-size: 4vh;
 }
-
-div {
-  margin: 20px 0;
-}
-
+np
 
 .buttons {
   display: flex;
@@ -24,9 +20,6 @@ div {
   margin: 1px 1px 1px 1px;
 }
 
-div {
-  margin: 5px;
-}
 .text-out {
   background-color: black;
   color: white;
@@ -49,7 +42,7 @@ div {
 }
 
 .App {
-  margin: 0;
+  margin-right: 2vw;
   padding: 0;
   background-color: black;
   height: 102vh;
@@ -77,7 +70,6 @@ div {
 
 .title{
   width: 80vw;
-  margin: 10px 2vw 0 0;
   background: linear-gradient(#000000 0%, #000000 30%, black 45%, rgb(34, 34, 34) 80%,
    #414141 100%);
   border-radius: 80%;
