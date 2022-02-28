@@ -15,7 +15,6 @@ function App() {
   let usdBalance = 0;
   let futureMoney = 0;
   let futureCoins = 0;
-  let txOption = '___';
   let outcome = '';
   let worth = 0;
    
@@ -77,11 +76,9 @@ function App() {
 
 
   if (myMethod === 'sell' && myPrice !== 0 && txamount !== 0) {
-    txOption = <a className ='sell'> sell</a>;
     futureCoins = balance - txamount;
     futureMoney = (myPrice * futureCoins).toFixed(2);
   }else if (myMethod === 'buy'&& myPrice !== 0 && txamount !== 0) { 
-    txOption = <a className ='buy'>buy</a>;
     futureCoins = +balance + +txamount;
     futureMoney = (myPrice * futureCoins).toFixed(2) ;
     }
@@ -89,10 +86,10 @@ function App() {
 
   let potentialBal = balance * myPrice;
 
-  if (futureMoney < potentialBal && myMethod == 'sell') {
-    outcome = <a className = 'sell'>lose out on</a>
-  }else if (futureMoney > potentialBal && myMethod == 'buy') {
-    outcome = <a className = 'buy'>profit</a>
+  if (futureMoney < potentialBal && myMethod === 'sell') {
+    outcome = <span className = 'sell'>lose out on</span>
+  }else if (futureMoney > potentialBal && myMethod === 'buy') {
+    outcome = <span className = 'buy'>profit</span>
   };
 
   let coinPrice= '';
@@ -132,7 +129,7 @@ function App() {
   <h3>Your current balance is: ${usdBalance}</h3>
   <h3 className = 'flex'>Future Balance:</h3>
   <div>
-    <h3><a className= 'number'>{futureCoins}</a> {coin}/<a className= 'number'>${futureMoney}</a></h3>
+    <h3><span className= 'number'>{futureCoins}</span> {coin}/<span className= 'number'>${futureMoney}</span></h3>
   </div>
     </div>
 
@@ -140,7 +137,7 @@ function App() {
   let change = (Math.abs(futureMoney - potentialBal-(txamount*worth))).toFixed(2);
   let difference = 
   <div>
-    <h3 className ='flex'>You would<a className='number'>{outcome}</a> ${change} </h3>
+    <h3 className ='flex'>You would<span className='number'>{outcome}</span> ${change} </h3>
   </div>
 
   if (formFull === false) {
