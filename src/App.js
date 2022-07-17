@@ -17,6 +17,7 @@ function App() {
   let futureCoins = 0;
   let outcome = '';
   let worth = 0;
+  let direction = "";
    
   useEffect(() => {
     fetch('https://api.coingecko.com/api/v3/simple/price?ids=ripple&vs_currencies=usd')
@@ -79,16 +80,25 @@ function App() {
     futureCoins = balance - txamount;
     futureMoney = (myPrice * futureCoins).toFixed(2);
   }else if (myMethod === 'buy'&& myPrice !== 0 && txamount !== 0) { 
-    futureCoins = +balance + +txamount;
+    futureCoins = balance + txamount;
     futureMoney = (myPrice * futureCoins).toFixed(2) ;
     }
 
 
   let potentialBal = balance * myPrice;
 
-  if (futureMoney < potentialBal && myMethod === 'sell') {
+
+  if (usdBalance < futureMoney) {
+    direction = 'up'
+
+  }else{
+    direction = 'down'
+  }
+  
+
+  if (futureMoney <= potentialBal && myMethod === 'sell') {
     outcome = <span className = 'sell'>lose out on</span>
-  }else if (futureMoney > potentialBal && myMethod === 'buy') {
+  }else if (futureMoney >= potentialBal && myMethod === 'buy') {
     outcome = <span className = 'buy'>profit</span>
   };
 
@@ -126,8 +136,11 @@ function App() {
 
   let summary = 
   <div className = 'summary'>
-  <h3>Your current balance is: ${usdBalance}</h3>
-  <h3 className = 'flex'>Future Balance:</h3>
+  <h3 className='title'>CURRENT INVESTMENT IN $</h3>
+  <div>
+  <h3> <span className='number'>${usdBalance}</span></h3>
+  </div>
+  <h3 className = 'title'>FUTURE BALANCE</h3>
   <div>
     <h3><span className= 'number'>{futureCoins}</span> {coin}/<span className= 'number'>${futureMoney}</span></h3>
   </div>
@@ -136,8 +149,10 @@ function App() {
 
   let change = (Math.abs(futureMoney - potentialBal-(txamount*worth))).toFixed(2);
   let difference = 
-  <div>
-    <h3 className ='flex'>You would<span className='number'>{outcome}</span> ${change} </h3>
+  <div className = 'divider'>
+    <h3 className ='flex'>You would<span className='number'>{outcome}</span> ${change} on your transaction. </h3>
+    <h3 className ='flex'>Your total investment will go {direction} $<span className='number'>{Math.abs((futureMoney-usdBalance).toFixed(2))}</span>
+     </h3>
   </div>
 
   if (formFull === false) {
@@ -153,6 +168,7 @@ function App() {
 
       <div className = 'form'>
       <form>
+        <br></br>
       <label for="coins">Choose Cryptocurrency:</label>
       <select onChange={changeCoin}name="coins" id="coins">
           <option value="blank"> </option>
@@ -188,6 +204,13 @@ function App() {
           <br></br>
           
        </div> 
+
+    
+    <footer> 
+      <h4>&copy; Made by Adam Haviv FEB 2022</h4>
+      <h6>This website does not provide financial advice and any displayed calculations should not be assumed as 100% accurate</h6>
+    </footer>
+
           
     </div>
   );
